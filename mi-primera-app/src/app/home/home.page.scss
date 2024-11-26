@@ -1,27 +1,212 @@
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
 }
-
 #container strong {
   font-size: 20px;
   line-height: 26px;
 }
-
 #container p {
   font-size: 16px;
   line-height: 22px;
-
   color: #8c8c8c;
-
   margin: 0;
 }
-
 #container a {
   text-decoration: none;
+}
+
+ion-button {
+  --background: linear-gradient(90deg, #4CAF50, #2196F3);
+  --color: white;
+  --border-radius: 25px;
+  font-size: 18px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+ion-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #2196F3, #4CAF50);
+}
+ion-button:active {
+  transform: scale(0.95);
+}
+
+/* Fondo de la página con gradiente animado */
+ion-content {
+  background: linear-gradient(135deg, #ff4b5c, #ff9a8b, #fbc7d4);
+  background-size: 400% 400%;
+  animation: gradiente 10s ease infinite;
+}
+@keyframes gradiente {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Estilo para centrar y dar efecto único al texto */
+.texto-centrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden; /* Asegura que partículas se limiten al contenedor */
+}
+
+/* Texto con animaciones de sombra y color */
+.texto-centrado h2 {
+  font-size: 7rem;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6), 0 0 25px #ff0099, 0 0 5px #ff0099;
+  margin: 0;
+  animation: texto-animado 3s ease-in-out infinite;
+  z-index: 2;
+}
+@keyframes texto-animado {
+  0% {
+    color: #000;
+    text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6), 0 0 25px #ff0099, 0 0 5px #ff0099;
+  }
+  50% {
+    color: #ff0099;
+    text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6), 0 0 25px #ff0099, 0 0 5px #ff0099;
+  }
+  100% {
+    color: #000;
+    text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6), 0 0 25px #ff0099, 0 0 5px #ff0099;
+  }
+}
+
+/* Partículas flotantes */
+.texto-centrado::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, transparent 80%);
+  animation: particulas 15s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes particulas {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(-10px) translateY(-20px);
+  }
+  100% {
+    transform: translateX(10px) translateY(20px);
+  }
+}
+/* Estilo base para el h1 */
+h1 {
+  font-size: 5rem; /* Tamaño grande */
+  font-weight: bold;
+  color: #ffffff; /* Color inicial */
+  text-transform: uppercase;
+  text-align: center;
+  overflow: hidden; /* Oculta el contenido para la animación de escritura */
+  white-space: nowrap; /* Asegura que el texto no se envuelva */
+  border-right: 4px solid #ffffff; /* Cursor de escritura */
+  animation: escribir 4s steps(30, end) infinite, cambiarColor 6s ease-in-out infinite;
+  margin: 0 auto;
+}
+
+/* Animación de escritura */
+@keyframes escribir {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Animación de cambio de color */
+@keyframes cambiarColor {
+  0% {
+    color: #ff4b5c; /* Rojo brillante */
+    text-shadow: 0 0 10px #ff4b5c, 0 0 20px #ff4b5c;
+  }
+  25% {
+    color: #ff9a8b; /* Rosa */
+    text-shadow: 0 0 10px #ff9a8b, 0 0 20px #ff9a8b;
+  }
+  50% {
+    color: #4CAF50; /* Verde */
+    text-shadow: 0 0 10px #4CAF50, 0 0 20px #4CAF50;
+  }
+  75% {
+    color: #2196F3; /* Azul */
+    text-shadow: 0 0 10px #2196F3, 0 0 20px #2196F3;
+  }
+  100% {
+    color: #ff4b5c; /* Rojo brillante (vuelta al inicio) */
+    text-shadow: 0 0 10px #ff4b5c, 0 0 20px #ff4b5c;
+  }
+}
+/* Estilo base para el ion-toolbar */
+ion-toolbar {
+  --background: linear-gradient(90deg, #4caf50, #2196f3); /* Fondo con gradiente */
+  --color: white; /* Color del texto */
+  --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+  display: flex; /* Usamos flexbox para controlar la alineación */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 70px; /* Altura del toolbar */
+  transition: background 0.3s ease-in-out;
+}
+
+/* Título centrado */
+#app-title {
+  font-family: 'Poppins', sans-serif; /* Fuente personalizada */
+  font-weight: bold; /* Negrita */
+  font-size: 1.5rem; /* Tamaño de letra */
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Sombra del texto */
+  animation: aparecer 2s ease-in-out, zoom 1s ease-in-out infinite alternate;
+}
+
+/* Animación para hacer que el título aparezca */
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación de zoom */
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+/* Hover opcional para el ion-toolbar */
+ion-toolbar:hover {
+  --background: linear-gradient(90deg, #2196f3, #4caf50);
 }
